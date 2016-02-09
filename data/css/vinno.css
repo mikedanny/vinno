@@ -1,0 +1,37 @@
+#wrapper {
+	/*background-color: rebeccapurple;*/
+}
+#tools-menu {
+	width: inherit;
+	padding: 8px;
+}
+.btn-tool {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#tag-details {
+	width: inherit;
+	padding: 5px;
+	display: none; 
+}
+#tag-list {
+	margin-bottom: 5px;
+}
+#tag-text {
+	width: 100%;
+	margin-bottom: 5px;
+	margin-top: 3px;
+}
+.tag {
+	padding: 3px;
+	border-radius: 3px;
+	text-align: center;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.tag:hover {
+	background-color: #ee3224;
+	text-decoration: line-through;
+	color: white;
+	cursor: pointer;
+}
