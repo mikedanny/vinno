@@ -1,8 +1,40 @@
-$("#tag-btn").click(function() {
-  $("#tag-details").show();
-  $("#text-btn").hide();
-  $("#sticker-btn").hide();
-  var tags = getTags(Url);
+var tagBtn = $("#tag-btn"),
+		tagDetails = $("#tag-details"),
+		tagList = $("#tag-list"),
+		textBtn = $("#text-btn"),
+		stickerBtn = $("#sticker-btn"),
+		tagBackBtn = $("#tag-back-btn"),
+		tagAddBtn = $("#tag-add-btn"),
+		tagText = $('#tag-text')
+
+
+
+tagBtn.on('click', function() {
+	clearTagList();
+  tagDetails.show(0, populateTagList());
+  textBtn.hide();
+  stickerBtn.hide();
+});
+
+tagBackBtn.on('click', function() {
+	tagDetails.hide();
+	textBtn.show();
+  stickerBtn.show();
+  clearTagList();
+});
+
+tagAddBtn.on('click', function() {
+	var tag = tagText.val();
+	var tagId = addTag(Url, tag);
+	addTagView(tagId, tag);
+	tagText.val('');
+});
+
+function clearTagList() {
+	tagList.children().remove();
+}
+function populateTagList() {
+	var tags = getTags(Url);
 
   for (var tagId in tags) {
   	if (tags.hasOwnProperty(tagId)) {
@@ -10,31 +42,17 @@ $("#tag-btn").click(function() {
   		addTagView(tagId, tag);
   	}
   }
-});
-
-$("#tag-back").click(function() {
-	$("#tag-details").hide();
-	$("#text-btn").show();
-  $("#sticker-btn").show();
-  $("#tag-list").children().remove();
-});
-
-$("#tag-add").click(function() {
-	var tag = $('#tag-text').val();
-	var tagId = addTag(Url, tag);
-	addTagView(tagId, tag);
-	$('#tag-text').val('');
-});
-
-function addTagView(tagId, tag) {
-	$("#tag-list").append("<span class=\"bg-info tag\" onclick=\"deleteTagView('"+tagId+"')\" id=\""+tagId+"\">"+tag+"</span>");
 }
 
-function deleteTagView(tagId) {
-	removeTag(Url, tagId);
-	$("#"+tagId).remove();
+function addTagView(tagId, tag){
+	var newTag = $('<span>' + tag + '</span>');
+	newTag.addClass('bg-info tag');
+	newTag.on('click', function() {
+		removeTag(Url, tagId);
+		newTag.remove();
+	});
+	tagList.append(newTag)
 }
 
-//TODO update with proper value
-var Url = "dummy"
+var Url = window.location.href;
 
