@@ -17,12 +17,11 @@
 #tag-list {
 	margin-bottom: 3px;
 	margin-top: 7px;
+	
 
 }
-#tag-text {
-	width: 100%;
-	margin-bottom: 5px;
-	margin-top: 3px;
+#tag-input{
+	margin-top: 6px;
 }
 .tag {
 	padding: 3px;

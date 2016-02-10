@@ -1,26 +1,17 @@
-var tagBtn = $("#tag-btn"),
-		tagDetails = $("#tag-details"),
-		tagList = $("#tag-list"),
-		textBtn = $("#text-btn"),
-		stickerBtn = $("#sticker-btn"),
-		tagBackBtn = $("#tag-back-btn"),
-		tagAddBtn = $("#tag-add-btn"),
+var tagBtn = $('#tag-btn'),
+		tagDetails = $('#tag-details'),
+		tagList = $('#tag-list'),
+		textBtn = $('#text-btn'),
+		stickerBtn = $('#sticker-btn'),
+		tagBackBtn = $('#tag-back-btn'),
+		tagAddBtn = $('#tag-add-btn'),
 		tagText = $('#tag-text')
 
 
 
 tagBtn.on('click', function() {
 	clearTagList();
-  tagDetails.show(0, populateTagList());
-  textBtn.hide();
-  stickerBtn.hide();
-});
-
-tagBackBtn.on('click', function() {
-	tagDetails.hide();
-	textBtn.show();
-  stickerBtn.show();
-  clearTagList();
+  tagDetails.toggle(0, populateTagList());
 });
 
 tagAddBtn.on('click', function() {
